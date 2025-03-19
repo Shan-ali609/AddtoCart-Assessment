@@ -1,11 +1,15 @@
+import Image from "next/image";
 
 export default function HeroSection() {
     return (
       <section className="relative w-full h-[60vh] md:h-[70vh] px-12 flex items-center justify-center bg-gray-100">
         {/* Background Image */}
         <div className="absolute px-2.5 md:px-12 inset-0">
-          <img
+          <Image
            src="/assesment.jpg"
+           alt="img"
+           height={320}
+           width={320}
             className="w-full h-full object-cover"
           />
         </div>

@@ -27,10 +27,10 @@ export default function Header() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6 text-gray-600">
-            <a href="/" className="font-semibold text-black">Home</a>
-            <a href="#" className="hover:text-black">Shop</a>
-            <a href="#" className="hover:text-black">Product</a>
-            <a href="#" className="hover:text-black">Contact Us</a>
+            <Link href="/" className="font-semibold text-black">Home</Link>
+            <Link href="#" className="hover:text-black">Shop</Link>
+            <Link href="#" className="hover:text-black">Product</Link>
+            <Link href="#" className="hover:text-black">Contact Us</Link>
           </div>
 
           {/* Icons */}

@@ -105,6 +105,7 @@
 "use client";
 import { Createcontext } from "@/context/contextprovider";
 import { getProducts, Product } from "@/lib/fetchproduct";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useContext } from "react";
 
@@ -158,9 +159,11 @@ const ProductCard = () => {
        <Link href={`/products/${product.id}`} passHref>
           {/* Product Image */}
           <div className="relative w-full h-48 group-hover:scale-105 transition-transform duration-300">
-            <img
+            <Image
               src={product.image}
               alt={product.title}
+              height={320}
+              width={320}
               className="w-full h-full object-cover rounded-md"
             />
             {/* Discount Labels */}

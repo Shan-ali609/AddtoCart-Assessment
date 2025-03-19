@@ -62,6 +62,7 @@
 import Cathobject from '@/components/Cathobject';
 import Timer from '@/components/Timer';
 import { getProducts } from '@/lib/fetchproduct';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -76,9 +77,11 @@ const Page = async ({ params }: any) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 md:p-8">
             {/* Left Column - Image */}
             <div className="bg-white p-4 rounded-lg shadow-md mx-auto max-w-xl w-full">
-                <img
+                <Image
                     src={project.image}
                     alt={project.title}
+                    height={320}
+                    width={320}
                     className="w-full h-64 object-contain"
                 />
             </div>
