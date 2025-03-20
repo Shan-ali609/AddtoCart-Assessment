@@ -258,7 +258,7 @@ const Page = () => {
 
 
 
-            <p className="flex justify-between text-lg font-bold">
+            <p className="flex justify-between text-lg mt-3 font-bold">
               <span>Total:</span>
               <span>${calculateTotalPrice()}</span>
             </p>

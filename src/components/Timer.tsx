@@ -27,8 +27,8 @@ const Timer = () => {
 
   return (
     <div className="mt-4 p-4  rounded-lg">
-    <p className="text-lg font-semibold">Limited Time Offer!</p>
-    <p className="text-2xl ">{formatTime(timeLeft)}</p>
+    <p className="text-2xl font-semibold">Limited Time Offer!</p>
+    <p className="text-1xl ">{formatTime(timeLeft)}</p>
   </div>
 
   )
