@@ -22,13 +22,13 @@ const Page = async ({ params }: PageProps) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 md:p-8">
             {/* Left Column - Image */}
-            <div className="bg-white p-4 rounded-lg shadow-md mx-auto max-w-xl w-full">
+            <div className="bg-white p-4 rounded-lg shadow-md mx-auto max-w-xl h-96 w-full">
                 <Image
                     src={project.image}
                     alt={project.title}
                     height={320}
                     width={320}
-                    className="w-full h-64 object-center"
+                    className="w-full h-full object-scale-down"
                 />
             </div>
 
