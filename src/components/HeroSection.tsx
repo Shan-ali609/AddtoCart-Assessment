@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
     return (
+      <div className="">
       <section className="relative w-full h-[50vh] md:h-[70vh] px-12 flex items-center my-2 justify-center bg-gray-100">
         {/* Background Image */}
         <div className="absolute px-2.5 md:px-12 inset-0">
@@ -25,5 +26,7 @@ export default function HeroSection() {
           </p>
         </div>
       </section>
+
+      </div>
     );
   }

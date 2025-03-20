@@ -20,7 +20,8 @@ const Page = async ({ params }: PageProps) => {
     if (!project) return notFound();
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 md:p-8">
+        <div className='pt-20'>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 md:p-8  ">
             {/* Left Column - Image */}
             <div className="bg-white p-4 rounded-lg shadow-md mx-auto max-w-xl h-96 w-full">
                 <Image
@@ -51,6 +52,7 @@ const Page = async ({ params }: PageProps) => {
                 {/* Add to Cart Component */}
                 <Cathobject id={project.id} projectss={project} />
             </div>
+        </div>
         </div>
     );
 };

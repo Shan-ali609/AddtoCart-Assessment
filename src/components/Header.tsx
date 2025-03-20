@@ -15,7 +15,7 @@ export default function Header() {
   console.log("Current cart:", cart);
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md fixed w-full z-50 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
