@@ -116,10 +116,11 @@
 "use client";
 import { Createcontext } from "@/context/contextprovider";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 const Page = () => {
   const { cart, dispatch } = useContext(Createcontext);
+  const [shippingMethod, setShippingMethod] = useState("");
 
   // Function to remove item from cart
   const handleRemove = (id: number) => {
@@ -136,9 +137,19 @@ const Page = () => {
     dispatch({ type: "Decrease", payload: id });
   };
 
-  // Calculate total price
-  const totalPrice = cart.reduce((total, product) => total + product.price * product.quantity, 0);
+  const calculateTotalPrice = () => {
+    let totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
 
+    if (shippingMethod === "KSA Drop") {
+        totalAmount *= 1.05; // Apply 5% tax
+    } else if (shippingMethod === "TCS") {
+        totalAmount *= 1.10; // Apply 10% tax
+    }
+
+    return totalAmount.toFixed(2);
+};
+
+    
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -210,15 +221,50 @@ const Page = () => {
           <div className="border-t mt-4 pt-4 text-sm">
             <p className="flex justify-between">
               <span>Subtotal:</span>
-              <span className="font-semibold">${totalPrice.toFixed(2)}</span>
+              <span className="font-semibold">${calculateTotalPrice()}</span>
             </p>
+
+            <div className="mt-5">
+    <h3 className="text-lg font-semibold">Choose Shipping Method:</h3>
+    
+            <div className="flex gap-5 mt-2">
+                {/* KSA Drop (5% Tax) */}
+                <label className="flex items-center gap-2 cursor-pointer">
+                    <input 
+                        type="radio" 
+                        name="shippingMethod" 
+                        value="KSA Drop"
+                        checked={shippingMethod === "KSA Drop"}
+                        onChange={(e) => setShippingMethod(e.target.value)}
+                        className="w-5 cursor-pointer h-5"
+                    />
+                    KSA Drop (+5% Tax)
+                </label>
+
+                {/* TCS (10% Tax) */}
+                <label className="flex items-center gap-2 cursor-pointer">
+                    <input 
+                        type="radio" 
+                        name="shippingMethod" 
+                        value="TCS"
+                        checked={shippingMethod === "TCS"}
+                        onChange={(e) => setShippingMethod(e.target.value)}
+                        className="w-5 cursor-pointer h-5"
+                    />
+                    TCS (+10% Tax)
+                </label>
+            </div>
+        </div>
+
+
+
             <p className="flex justify-between text-lg font-bold">
               <span>Total:</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>${calculateTotalPrice()}</span>
             </p>
           </div>
 
-          <button className="w-full bg-black text-white py-3 mt-4 rounded-md hover:bg-gray-900 transition">
+          <button className="w-full bg-black text-white py-3 cursor-pointer mt-4 rounded-md hover:bg-gray-900 transition">
             Checkout
           </button>
         </div>
