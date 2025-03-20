@@ -31,31 +31,21 @@ const Cathobject = ({ id , projectss }: any) => {
         
 
 
-        const handleDecrease = () => {
-            setQuantity(prevQuantity => {
-                // Prevent quantity from going below 1
-                if (prevQuantity <= 1) return 1;
-        
-                // Dispatch a "Decrease" action with the item's id
-                dispatch({
-                    type: "Decrease",
-                    payload: id, // We just need the item id to decrease quantity
-                });
-        
-                return prevQuantity - 1;
+        const handleDecrease = (id: number) => {
+            setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1));
+            dispatch({
+                type: "Decrease",
+                payload: id,
             });
         };
+        
 
            // Dispatch the updated quantity when it changes
-    useEffect(() => {
-        if (project && project.quantity !== quantity) {
-            const updatedProject = { ...project, quantity };
-            dispatch({
-                type: "Increase",
-                payload: updatedProject.id, // Just pass the id to increase its quantity
-            });
-        }
-    }, [quantity, project, dispatch]);
+           useEffect(() => {
+            if (project?.quantity !== undefined) {
+                setQuantity(project.quantity);
+            }
+        }, [project]);
 
 
 
@@ -87,7 +77,7 @@ const Cathobject = ({ id , projectss }: any) => {
         <div>
             <div className="flex items-center">
                         <button
-                          onClick={handleDecrease}
+                          onClick={()=>handleDecrease(projectss.id)}
                           className="p-2 bg-gray-200 cursor-pointer rounded-full w-8 h-8 flex items-center justify-center"
                         >
                           -

@@ -158,13 +158,13 @@ const ProductCard = () => {
       >
        <Link href={`/products/${product.id}`} passHref>
           {/* Product Image */}
-          <div className="relative w-full h-48 group-hover:scale-105 transition-transform duration-300">
+          <div className="relative w-full h-96 group-hover:scale-105 transition-transform duration-300">
             <Image
               src={product.image}
               alt={product.title}
               height={320}
               width={320}
-              className="w-full h-full object-cover rounded-md"
+              className="w-full h-full object-scale-down rounded-md"
             />
             {/* Discount Labels */}
             <div className="absolute top-2 left-2">
